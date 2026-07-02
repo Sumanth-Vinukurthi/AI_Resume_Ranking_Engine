@@ -35,12 +35,12 @@ async def upload_files( candidates: UploadFile = File(...), job_description: Upl
  
         shutil.copyfileobj(job_description.file,buffer)
 
-    # response = graph.invoke({
-    #     "jd_file_path":jd_path,
-    #     "candidates_file_path":candidates_path,
-    #     "jd" : None,
-    #     "total_candidates" : None
-    # })
+    response = graph.invoke({
+        "jd_file_path":jd_path,
+        "candidates_file_path":candidates_path,
+        "jd" : None,
+        "total_candidates" : None
+    })
     df = pd.read_csv("final_outputs/final_candidates.csv")
     return df.to_dict(orient="records")
     
